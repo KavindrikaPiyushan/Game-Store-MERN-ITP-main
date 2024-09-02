@@ -21,7 +21,6 @@ const Shop = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [ratingsData, setRatingsData] = useState([]);
-  const [soortedgameStocks, setSortedGameStocks] = useState([]);
   const [showtoprated, setShowTopRated] = useState(false);
 
   useEffect(() => {
@@ -162,7 +161,7 @@ const Shop = () => {
             setShowTopRated(true);
           }}
         >
-          Show Top Rated List...
+          Show Top Rated This week...
         </button>
 
         {filteredStocks.length === 0 ? (

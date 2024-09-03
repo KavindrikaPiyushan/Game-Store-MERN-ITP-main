@@ -46,6 +46,7 @@ header a{
 }
 .carousel .list .item .content{
     position: absolute;
+    z-index: 0;
     top: 20%;
     width: 1140px;
     max-width: 80%;
@@ -300,6 +301,21 @@ header a{
         opacity: 0;
     }
 }
+.darklayer{
+    opacity: 0.4;background-color: #000;
+}
+
+.carousel.prev .darklayer,
+.carousel.next .darklayer{
+    animation: runningTimes 2s linear 1 forwards;
+}
+@keyframes runningTimes{
+    from{ opacity: 0;background-color: transparent;}
+    to{opacity: 0.4;background-color: #000;}
+    
+}
+
+
 @media screen and (max-width: 678px) {
     .carousel .list .item .content{
         padding-right: 0;
@@ -308,5 +324,3 @@ header a{
         font-size: 30px;
     }
 }
-
-

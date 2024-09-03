@@ -213,6 +213,7 @@ const Home = () => {
             {filteredStocks[0] && (
               <div className="item">
                 <img src={filteredStocks[0].AssignedGame.coverPhoto} />
+                <div className="darklayer absolute -z-0 top-0 w-[100%] h-[100%] " ref={timeRef} ></div>
                 <div className="content">
                    
                   <div className="author">LUNDEV</div>
@@ -237,6 +238,7 @@ const Home = () => {
             {filteredStocks[1] && (
               <div className="item">
                 <img src={filteredStocks[1].AssignedGame.coverPhoto} />
+                <div className="darklayer absolute -z-0 top-0 w-[100%] h-[100%] " ref={timeRef} ></div>
                 <div className="content">
                   <div className="author">LUNDEV</div>
                   <div className="title">DESIGN SLIDER </div>
@@ -259,6 +261,7 @@ const Home = () => {
             {filteredStocks[2] && (
               <div className="item">
                 <img src={filteredStocks[2].AssignedGame.coverPhoto} />
+                <div className="darklayer absolute -z-0 top-0 w-[100%] h-[100%] " ref={timeRef} ></div>
                 <div className="content">
                   <div className="author">LUNDEV</div>
                   <div className="title">DESIGN SLIDER </div>
@@ -280,7 +283,7 @@ const Home = () => {
             )}
           </div>
 
-          <div className="thumbnail" ref={thumbnailRef}>
+          <div className="thumbnail hidden" ref={thumbnailRef}>
           {filteredStocks[0] && (
               <div  className="item">
                 <img

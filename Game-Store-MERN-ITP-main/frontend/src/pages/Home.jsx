@@ -1,19 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import  { useEffect, useRef, useState } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { toast, Flip } from "react-toastify";
-import Hangman from "../components/Games/Hangaman";
-import Chatbot from "../components/chatbox";
+
 import axios from "axios";
 import { Link } from "react-router-dom";
-import GameIcon from "../assets/icons/detailsIcon";
-import { Card, CardBody, Chip, ScrollShadow } from "@nextui-org/react";
 import "../style/Slider.css";
-import CardBodyHome from "../components/CardBodyHome";
-import { GrFormPreviousLink } from "react-icons/gr";
-import { GrFormNextLink } from "react-icons/gr";
-
-import Slider from "../components/Slider";
 
 const Home = () => {
   const [gameStocks, setGameStocks] = useState([]);
@@ -21,6 +13,9 @@ const Home = () => {
   const [ratingsData, setRatingsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  
+
+  
 
   const notify = () => {
     toast.success("🦄 Wow so easy!", {
@@ -130,32 +125,7 @@ const Home = () => {
   }, [ratingsData, gameStocks]);
 
   const [activeIndex, setActiveIndex] = useState(0);
-  const images = [
-    {
-      id: 1,
-      src: "./img1.jpeg",
-      title: "Name Slider 1",
-      description: "Description 1",
-    },
-    {
-      id: 2,
-      src: "image/img2.jpg",
-      title: "Name Slider 2",
-      description: "Description 2",
-    },
-    {
-      id: 3,
-      src: "image/img3.jpg",
-      title: "Name Slider 3",
-      description: "Description 3",
-    },
-    {
-      id: 4,
-      src: "image/img4.jpg",
-      title: "Name Slider 4",
-      description: "Description 4",
-    },
-  ];
+ 
 
   const carouselRef = useRef(null);
   const listRef = useRef(null);
@@ -203,6 +173,8 @@ const Home = () => {
     }, timeRunning);
   };
 
+  
+
   return (
     <div className="font-primaryRegular bg-customDark flex flex-col min-h-screen">
       <Header />
@@ -215,21 +187,21 @@ const Home = () => {
                 <img src={filteredStocks[0].AssignedGame.coverPhoto} />
                 <div className="darklayer absolute -z-0 top-0 w-[100%] h-[100%] " ref={timeRef} ></div>
                 <div className="content">
-                   
-                  <div className="author">LUNDEV</div>
-                  <div className="title">DESIGN SLIDER </div>
-                  <div className="topic">ANIMAL</div>
-                  <div className="des">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
-                    sequi, rem magnam nesciunt minima placeat, itaque eum neque
-                    officiis unde, eaque optio ratione aliquid assumenda facere
-                    ab et quasi ducimus aut doloribus non numquam. Explicabo,
-                    laboriosam nisi reprehenderit tempora at laborum natus unde.
-                    Ut, exercitationem eum aperiam illo illum laudantium?
+                  <div className="title">{filteredStocks[0].AssignedGame.title}</div>
+                  <div className="topic">-{filteredStocks[0].discount}% off</div>
+                  <div className="des">{filteredStocks[0].AssignedGame.Description}</div>
+
+                  <div className="author">
+                  <span className="line-through mr-1 text-editionColor">
+                                LKR.{filteredStocks[0].UnitPrice}
+                              </span> 
+                              <span className="discprice">LKR.{filteredStocks[0].discount > 0
+                    ? filteredStocks[0].UnitPrice - (filteredStocks[0].UnitPrice * filteredStocks[0].discount) / 100
+                    : filteredStocks[0].UnitPrice}</span>
                   </div>
                   <div className="buttons">
-                    <button>SEE MORE</button>
-                    <button>SUBSCRIBE</button>
+                  <Link to={`/game/${filteredStocks[0]._id}` } > <button className="border-none bg-[#f1683a] tracking-widest font-poppins font-medium p-[10px] rounded-[5px]">SEE MORE </button></Link>
+                    
                   </div>
                 </div>
               </div>
@@ -240,20 +212,22 @@ const Home = () => {
                 <img src={filteredStocks[1].AssignedGame.coverPhoto} />
                 <div className="darklayer absolute -z-0 top-0 w-[100%] h-[100%] " ref={timeRef} ></div>
                 <div className="content">
-                  <div className="author">LUNDEV</div>
-                  <div className="title">DESIGN SLIDER </div>
-                  <div className="topic">ANIMAL</div>
-                  <div className="des">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
-                    sequi, rem magnam nesciunt minima placeat, itaque eum neque
-                    officiis unde, eaque optio ratione aliquid assumenda facere
-                    ab et quasi ducimus aut doloribus non numquam. Explicabo,
-                    laboriosam nisi reprehenderit tempora at laborum natus unde.
-                    Ut, exercitationem eum aperiam illo illum laudantium?
+                  
+                <div className="title">{filteredStocks[1].AssignedGame.title}</div>
+                  <div className="topic">-{filteredStocks[1].discount}% off</div>
+                  <div className="des">{filteredStocks[1].AssignedGame.Description}</div>
+
+                  <div className="author">
+                  <span className="line-through mr-1 text-editionColor">
+                                LKR.{filteredStocks[1].UnitPrice}
+                              </span> 
+                              <span className="discprice">LKR.{filteredStocks[1].discount > 0
+                    ? filteredStocks[1].UnitPrice - (filteredStocks[1].UnitPrice * filteredStocks[1].discount) / 100
+                    : filteredStocks[1].UnitPrice}</span>
                   </div>
                   <div className="buttons">
-                    <button>SEE MORE</button>
-                    <button>SUBSCRIBE</button>
+                  <Link to={`/game/${filteredStocks[1]._id}` } > <button className="border-none bg-[#f1683a] tracking-widest font-poppins font-medium p-[10px] rounded-[5px]">SEE MORE </button></Link>
+                    
                   </div>
                 </div>
               </div>
@@ -263,27 +237,29 @@ const Home = () => {
                 <img src={filteredStocks[2].AssignedGame.coverPhoto} />
                 <div className="darklayer absolute -z-0 top-0 w-[100%] h-[100%] " ref={timeRef} ></div>
                 <div className="content">
-                  <div className="author">LUNDEV</div>
-                  <div className="title">DESIGN SLIDER </div>
-                  <div className="topic">ANIMAL</div>
-                  <div className="des">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
-                    sequi, rem magnam nesciunt minima placeat, itaque eum neque
-                    officiis unde, eaque optio ratione aliquid assumenda facere
-                    ab et quasi ducimus aut doloribus non numquam. Explicabo,
-                    laboriosam nisi reprehenderit tempora at laborum natus unde.
-                    Ut, exercitationem eum aperiam illo illum laudantium?
+                  
+                <div className="title">{filteredStocks[2].AssignedGame.title}</div>
+                  <div className="topic">-{filteredStocks[2].discount}% off</div>
+                  <div className="des">{filteredStocks[2].AssignedGame.Description}</div>
+
+                  <div className="author">
+                  <span className="line-through mr-1 text-editionColor">
+                                LKR.{filteredStocks[2].UnitPrice}
+                              </span> 
+                              <span className="discprice">LKR.{filteredStocks[2].discount > 0
+                    ? filteredStocks[2].UnitPrice - (filteredStocks[2].UnitPrice * filteredStocks[2].discount) / 100
+                    : filteredStocks[2].UnitPrice}</span>
                   </div>
                   <div className="buttons">
-                    <button>SEE MORE</button>
-                    <button>SUBSCRIBE</button>
+                   <Link to={`/game/${filteredStocks[2]._id}` } > <button className="border-none bg-[#f1683a] tracking-widest font-poppins font-medium p-[10px] rounded-[5px]">SEE MORE </button></Link>
+                    
                   </div>
                 </div>
               </div>
             )}
           </div>
 
-          <div className="thumbnail hidden" ref={thumbnailRef}>
+          <div className="thumbnail " ref={thumbnailRef}>
           {filteredStocks[0] && (
               <div  className="item">
                 <img
@@ -319,7 +295,7 @@ const Home = () => {
               </div>)}
             
           </div>
-          <div className="arrows">
+          <div className="arrows hidden">
             <button id="prev" ref={prevRef} onClick={handlePrev}>
               &lt;
             </button>
